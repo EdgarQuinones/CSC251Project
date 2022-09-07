@@ -1,32 +1,32 @@
-import java.lang.ref.PhantomReference;
 
 public class Policy
 {
     //Instance variables, p stands for 'policy', and h stands for 'holder'
     private int pNumber, phAge;
-    private String phFirstName, phLastName;
-    private bool phSmokingStatus;
+    private String phFirstName, phLastName, providerName, smokerStatus, smoker = "smoker";
     private double phHeight, phWeight;
 
     //Default constructor
     public Policy(){
 	    pNumber = 0;
+        providerName = "";
         phAge = 0;
         phFirstName = "";
         phLastName = "";
-        phSmokingStatus = null;
+        smokerStatus = "";
         phHeight = 0;
         phWeight = 0;
 
 	}
 
 	 //Constructor with perameters 
-	public Policy(int pn, int pa, String fn, String ln, bool ss, double phh, double phw){
+	public Policy(int pn, String pna, int pa, String fn, String ln, String ss, double phh, double phw){
 	    pNumber = pn;
+        providerName = pna;
         phAge = pa;
         phFirstName = fn;
         phLastName = ln;
-        phSmokingStatus = ss;
+        smokerStatus = ss;
         phHeight = phh;
         phWeight = phw;
 	}
@@ -34,6 +34,9 @@ public class Policy
     //Below are all Accessor methods
     public int getPolicyNumber(){
         return pNumber;
+    }
+    public String getProviderName(){
+        return providerName;
     }
     public int getAge(){
         return phAge;
@@ -45,11 +48,8 @@ public class Policy
         return phLastName;
     }
     public String getSmokingStatus(){
-        if(phSmokingStatus){
-            return "Smoker";
-        }else{
-            return "Non-Smoker";
-        }
+        return smokerStatus;
+       
     }
     public double getHeight(){
         return phHeight;
@@ -72,12 +72,8 @@ public class Policy
     public void setLastName(String ln){
         phLastName = ln;
     }
-    public void setSmokingStatus(bool ss){
-        if(ss){
-            phSmokingStatus = true;
-        }else{
-            phSmokingStatus = false;
-        }
+    public void setSmokingStatus(String ss){
+        smokerStatus = ss;
     }
     public void setHeight(double h){
         phHeight = h;
@@ -90,14 +86,14 @@ public class Policy
     public double getPolicyHoldersBMI(){
         return ((phWeight * 703) / (phHeight * phHeight));
     }
-    
+
     //Calculates Insurance price
     public double getInsurancePrice(){
         double price = 600;
         if(phAge > 50){
             price+= 75;
         }
-        if(phSmokingStatus){
+        if(smokerStatus.equalsIgnoreCase(smoker)){
             price+= 100;
         }
         if(((phWeight * 703) / (phHeight * phHeight)) > 35){
