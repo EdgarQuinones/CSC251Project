@@ -4,7 +4,7 @@ public class Policy
     //Instance variables, p stands for 'policy', and h stands for 'holder'
     private int pNumber, phAge;
     private String phFirstName, phLastName, providerName, smokerStatus, smoker = "smoker";
-    private double phHeight, phWeight;
+    private int phHeight, phWeight;
 
     //Default constructor
     public Policy(){
@@ -20,7 +20,7 @@ public class Policy
 	}
 
 	 //Constructor with parameters 
-	public Policy(int pn, String pna, int pa, String fn, String ln, String ss, double phh, double phw){
+	public Policy(int pn, String pna, int pa, String fn, String ln, String ss, int phh, int phw){
 	    pNumber = pn;
         providerName = pna;
         phAge = pa;
@@ -93,7 +93,7 @@ public class Policy
      * 
      * @return Policy Holder's height (double)
      * */
-    public double getHeight(){
+    public int getHeight(){
         return phHeight;
     }
     
@@ -102,7 +102,7 @@ public class Policy
      * 
      * @return Policy Holder's weight (double)
      * */
-    public double getWeight(){
+    public int getWeight(){
         return phWeight;
     }
 
@@ -164,7 +164,7 @@ public class Policy
      * @param h, Policy Holder's height, a double
      * 
      * */
-    public void setHeight(double h){
+    public void setHeight(int h){
         phHeight = h;
     }
     
@@ -174,7 +174,7 @@ public class Policy
      * @param w, Policy Holder's weight, a double
      * 
      * */
-    public void setWeight(double w){
+    public void setWeight(int w){
         phWeight = w;
     }
 
@@ -184,7 +184,7 @@ public class Policy
      * @return Policy Holder's BMI
      * */
     public double getPolicyHoldersBMI(){
-        return ((phWeight * 703) / (phHeight * phHeight));
+        return ((double)(phWeight * 703) / (phHeight * phHeight));
     }
 
     /**
@@ -193,7 +193,7 @@ public class Policy
      * @return Policy Holder's insurance price
      * */
     public double getInsurancePrice(){
-        double price = 600;
+    	double price = 600;
         if(phAge > 50){
             price+= 75;
         }
@@ -201,7 +201,7 @@ public class Policy
             price+= 100;
         }
         if(((phWeight * 703) / (phHeight * phHeight)) > 35){
-            price+= ((((phWeight * 703) / (phHeight * phHeight))-35)*20);
+            price+= (double)((((phWeight * 703) / (phHeight * phHeight))-35)*20);
         }
 
         return price;
