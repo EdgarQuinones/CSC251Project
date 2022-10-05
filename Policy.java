@@ -19,7 +19,7 @@ public class Policy
 
 	}
 
-	 //Constructor with perameters 
+	 //Constructor with parameters 
 	public Policy(int pn, String pna, int pa, String fn, String ln, String ss, double phh, double phw){
 	    pNumber = pn;
         providerName = pna;
