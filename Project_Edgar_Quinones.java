@@ -8,7 +8,7 @@ public class Project_Edgar_Quinones
 		//Variables used for holding data and calculations
 		int pNumber, phAge;
     	String phFirstName, phLastName, providerName, smokerstatus, smoker = "smoker", nonsmoker = "non-smoker";
-    	int phHeight, phWeight;
+    	int phHeight, phWeight, numOfSmokers = 0, numOfNonSmokers = 0;
     	
     		ArrayList<Policy> policysList = new ArrayList<Policy>();
 				
@@ -55,7 +55,16 @@ public class Project_Edgar_Quinones
 				System.out.printf("Policyholder's BMI: %,.2f",policysList.get(i).getPolicyHoldersBMI());
 				System.out.println();
 				System.out.printf("Policy Price: %,.2f\n\n",policysList.get(i).getInsurancePrice());
-	         }  
+				
+				if(policysList.get(i).getSmokingStatus().equalsIgnoreCase("smoker")) {
+					numOfSmokers++;
+				}else {
+					numOfNonSmokers++;
+				}
+	         }
+			
+			System.out.println("The number of policies with a smoker is: "+numOfSmokers);
+			System.out.println("The number of policies with a non-smoker is: "+numOfNonSmokers);
 			
 			
 		}
