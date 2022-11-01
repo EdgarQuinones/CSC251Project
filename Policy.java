@@ -5,6 +5,7 @@ public class Policy
     private int pNumber;
     private providerName;
     private PolicyHolder policyHolder;
+    private static int numOfPolicyClasses = 0;
 
     
 
@@ -13,6 +14,7 @@ public class Policy
 	    pNumber = pn;
         providerName = pna;
         policyHolder = new PolicyHolder(policy);
+        numOfPolicyClasses++;
        
 	}
 
