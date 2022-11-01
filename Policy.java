@@ -2,33 +2,18 @@
 public class Policy
 {
     //Instance variables, p stands for 'policy', and h stands for 'holder'
-    private int pNumber, phAge;
-    private String phFirstName, phLastName, providerName, smokerStatus, smoker = "smoker";
-    private int phHeight, phWeight;
+    private int pNumber;
+    private providerName;
+    private PolicyHolder policyHolder;
 
-    //Default constructor
-    public Policy(){
-	    pNumber = 0;
-        providerName = "";
-        phAge = 0;
-        phFirstName = "";
-        phLastName = "";
-        smokerStatus = "";
-        phHeight = 0;
-        phWeight = 0;
-
-	}
+    
 
 	 //Constructor with parameters 
-	public Policy(int pn, String pna, int pa, String fn, String ln, String ss, int phh, int phw){
+	public Policy(int pn, String pna,PolicyHolder policy){
 	    pNumber = pn;
         providerName = pna;
-        phAge = pa;
-        phFirstName = fn;
-        phLastName = ln;
-        smokerStatus = ss;
-        phHeight = phh;
-        phWeight = phw;
+        policyHolder = new PolicyHolder(policy);
+       
 	}
 
 	//below are accessors
@@ -52,60 +37,18 @@ public class Policy
     }
     
     /**
-     * 	The getAge() function outputs the age of Policy Holder
-     * 
-     * @return Policy Holder's age (int)
-     * */
-    public int getAge(){
-        return phAge;
-    }
-    
-    /**
-     * 	The getFirstName() function outputs Policy Holder's first name
-     * 
-     * @return Policy Holder's first name (String)
-     * */
-    public String getFirstName(){
-        return phFirstName;
-    }
-    
-    /**
-     * 	The getLastName() function outputs Policy Holder's last name
-     * 
-     * @return Policy Holder's last name (String)
-     * */
-    public String getLastName(){
-        return phLastName;
-    }
-    
-    /**
-     * 	The getSmokingStatus() function outputs Policy Holder's smoking status
-     * 
-     * @return Policy Holder's smoking status (String)
-     * */
-    public String getSmokingStatus(){
-        return smokerStatus;
-       
-    }
-    
-    /**
-     * 	The getHeight() function outputs Policy Holder's height
-     * 
-     * @return Policy Holder's height (double)
-     * */
-    public int getHeight(){
-        return phHeight;
-    }
-    
-    /**
-     * 	The getWeight() function outputs Policy Holder's weight
-     * 
-     * @return Policy Holder's weight (double)
-     * */
-    public int getWeight(){
-        return phWeight;
-    }
+      getPolicyHolder method
+      @return - return a reference to a copy of this policyholder object
+  */
 
+   
+   public PolicyHolder getPolicyHolder()
+   {
+      return new PolicyHolder(policyHolder); 
+   }
+
+    
+   
     //Below are all Mutator methods
    
     /**
@@ -119,66 +62,15 @@ public class Policy
     }
     
     /**
-     * 	The setAge() function sets the Policy Holder's age
-     * 
-     * @param a, Policy Holder's age, an int
-     * 
-     * */
-    public void setAge(int a){
-        phAge = a;
-    }
-    
-    /**
-     * 	The setFirstName() function sets the Policy Holder's first name
-     * 
-     * @param fn, Policy Holder's first name, a String
-     * 
-     * */
-    public void setFirstName(String fn){
-        phFirstName = fn;
-    }
-    
-    /**
-     * 	The setFirstName() function sets the Policy Holder's last name
-     * 
-     * @param ln, Policy Holder's last name, a String
-     * 
-     * */
-    public void setLastName(String ln){
-        phLastName = ln;
-    }
-    
-    /**
-     * 	The setSmokingStatus() function sets the Policy Holder's smoking status
-     * 
-     * @param ss, Policy Holder's smoker status, a String
-     * 
-     * */
-    public void setSmokingStatus(String ss){
-        smokerStatus = ss;
-    }
-    
-    /**
-     * 	The setHeight() function sets the Policy Holder's height
-     * 
-     * @param h, Policy Holder's height, a double
-     * 
-     * */
-    public void setHeight(int h){
-        phHeight = h;
-    }
-    
-    /**
-     * 	The setWeight() function sets the Policy Holder's weight
-     * 
-     * @param w, Policy Holder's weight, a double
-     * 
-     * */
-    public void setWeight(int w){
-        phWeight = w;
-    }
+      @param policy - a PolicyHolder object  
+   */  
+   
+   public void setPolicyHolder(PolicyHolder policy)
+   {
+      policyHolder = new PolicyHolder(policy);
+   }
 
-    /**
+   /**
      * 	The getPolicyHoldersBMI() function calculates and returns the Policy Holder's BMI
      * 
      * @return Policy Holder's BMI
@@ -206,5 +98,23 @@ public class Policy
 
         return price;
     }
+   
+   /**
+      toString method
+      @return - A string containing the Policy information
+  */ 
+      
+  /** We make use of the String.format method to format the policy information. */
+   
+   public String toString()
+   {
+      return String.format("Provider Number: " + pNumber +
+             "\nProvider Name: " + providerName +
+             "\nContact Hours: " + contactHours +
+             "\nPolicy Holder: " + policyHolder.toString() + //we use the Policy Holders's toString() method for convenience here
+                 );
+         
+   }
 
+    
 }
