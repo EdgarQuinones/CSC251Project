@@ -170,7 +170,7 @@ public class PolicyHolder
 
     /**
       toString method
-      @return - A string containing the policy holder information
+      @return - A string containing the policy holder information.
   */ 
 
    /*

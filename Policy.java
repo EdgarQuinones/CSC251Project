@@ -101,7 +101,7 @@ public class Policy
    
    /**
       toString method
-      @return - A string containing the Policy information
+      @return - A string containing the Policy information.
   */ 
       
   /** We make use of the String.format method to format the policy information. */
