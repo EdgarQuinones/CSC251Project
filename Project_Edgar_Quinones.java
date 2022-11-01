@@ -6,7 +6,7 @@ public class Project_Edgar_Quinones
 	public static void main(String[] args) {
 		
 		//Variables used for holding data and calculations
-		int pNumber, phAge;
+		int pNumber, phAge, numOfPolicyClassesMade = 0;
     	String phFirstName, phLastName, providerName, smokerstatus, smoker = "smoker", nonsmoker = "non-smoker";
     	int phHeight, phWeight, numOfSmokers = 0, numOfNonSmokers = 0;
     	
@@ -37,7 +37,14 @@ public class Project_Edgar_Quinones
 	               inputFile.nextLine();
 	            }
 				
-	            policysList.add(new Policy(pNumber, providerName, phAge, phFirstName, phLastName, smokerstatus, phHeight, phWeight));
+               PolicyHolder policyHolder = new PolicyHolder(phAge, phFirstName, phLastName, smokerstatus, phHeight, phWeight);
+               Policy policy = new Policy(pNumber, providerName,policyHolder);
+               
+               
+	            policysList.add(policy);
+               
+               
+               
 			}
 				
 			
@@ -45,24 +52,18 @@ public class Project_Edgar_Quinones
 			
 			for(int i =0; i < policysList.size(); i++)
 	         { 
-				System.out.println("Policy Number: "+policysList.get(i).getPolicyNumber());
-				System.out.println("Provider Name: "+policysList.get(i).getProviderName());
-				System.out.println("Policyholder's First Name: "+policysList.get(i).getFirstName());
-				System.out.println("Policyholder's Age: "+policysList.get(i).getAge());
-				System.out.println("Policyholder's Smoking Status: "+policysList.get(i).getSmokingStatus());
-				System.out.println("Policyholder's Height: "+policysList.get(i).getHeight());
-				System.out.println("Policyholder's Weight: "+policysList.get(i).getWeight());
-				System.out.printf("Policyholder's BMI: %,.2f",policysList.get(i).getPolicyHoldersBMI());
-				System.out.println();
-				System.out.printf("Policy Price: %,.2f\n\n",policysList.get(i).getInsurancePrice());
+               numOfPolicyClassesMade++; 
+				System.out.println(policysList.get(i));
+            System.out.println();
 				
-				if(policysList.get(i).getSmokingStatus().equalsIgnoreCase("smoker")) {
+				if(policysList.get(i).getPolicySmokingStatus().equalsIgnoreCase("smoker")) {
 					numOfSmokers++;
 				}else {
 					numOfNonSmokers++;
 				}
 	         }
 			
+         System.out.println("There were "+numOfPolicyClassesMade+" Policy objects created.");
 			System.out.println("The number of policies with a smoker is: "+numOfSmokers);
 			System.out.println("The number of policies with a non-smoker is: "+numOfNonSmokers);
 			

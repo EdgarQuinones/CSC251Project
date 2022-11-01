@@ -3,7 +3,7 @@ public class Policy
 {
     //Instance variables, p stands for 'policy', and h stands for 'holder'
     private int pNumber;
-    private providerName;
+    private String providerName;
     private PolicyHolder policyHolder;
     private static int numOfPolicyClasses = 0;
 
@@ -49,7 +49,10 @@ public class Policy
       return new PolicyHolder(policyHolder); 
    }
 
+    public String getPolicySmokingStatus(){
     
+    return policyHolder.getSmokingStatus();
+    }
    
     //Below are all Mutator methods
    
@@ -72,34 +75,7 @@ public class Policy
       policyHolder = new PolicyHolder(policy);
    }
 
-   /**
-     * 	The getPolicyHoldersBMI() function calculates and returns the Policy Holder's BMI
-     * 
-     * @return Policy Holder's BMI
-     * */
-    public double getPolicyHoldersBMI(){
-        return ((double)(phWeight * 703) / (phHeight * phHeight));
-    }
-
-    /**
-     * 	The getInsurancePrice() function calculates and returns the insurance price
-     * 
-     * @return Policy Holder's insurance price
-     * */
-    public double getInsurancePrice(){
-    	double price = 600;
-        if(phAge > 50){
-            price+= 75;
-        }
-        if(smokerStatus.equalsIgnoreCase(smoker)){
-            price+= 100;
-        }
-        if(((phWeight * 703) / (phHeight * phHeight)) > 35){
-            price+= (double)((((phWeight * 703) / (phHeight * phHeight))-35)*20);
-        }
-
-        return price;
-    }
+   
    
    /**
       toString method
@@ -112,8 +88,7 @@ public class Policy
    {
       return String.format("Provider Number: " + pNumber +
              "\nProvider Name: " + providerName +
-             "\nContact Hours: " + contactHours +
-             "\nPolicy Holder: " + policyHolder.toString() + //we use the Policy Holders's toString() method for convenience here
+             "\nPolicy Holder: " + policyHolder.toString() //we use the Policy Holders's toString() method for convenience here
                  );
          
    }

@@ -5,6 +5,7 @@ public class PolicyHolder
     private int phAge;
     private String phFirstName, phLastName,  smokerStatus, smoker = "smoker";
     private int phHeight, phWeight;
+    
 
    
    
@@ -21,7 +22,7 @@ public class PolicyHolder
 
 
 	 //Constructor with parameters 
-	public Policy(int pa, String fn, String ln, String ss, int phh, int phw){
+	public PolicyHolder(int pa, String fn, String ln, String ss, int phh, int phw){
         phAge = pa;
         phFirstName = fn;
         phLastName = ln;
@@ -36,14 +37,25 @@ public class PolicyHolder
    */
    public PolicyHolder(PolicyHolder object2)
    {
-        phAge = object2.pa;
-        phFirstName = object2.fn;
-        phLastName = object2.ln;
-        smokerStatus = object2.ss;
-        phHeight = object2.phh;
-        phWeight = object2.phw;
+        phAge = object2.phAge;
+        phFirstName = object2.phFirstName;
+        phLastName = object2.phLastName;
+        smokerStatus = object2.smokerStatus;
+        phHeight = object2.phHeight;
+        phWeight = object2.phWeight;
       
    }
+   /*
+   public TextBook(TextBook object2)
+   {
+      title = object2.title;
+      author = object2.author;
+      publisher = object2.publisher;
+      price = object2.price;
+   }
+
+   
+   */
    
 
 	//below are accessors
@@ -167,6 +179,35 @@ public class PolicyHolder
     public void setWeight(int w){
         phWeight = w;
     }
+    
+    /**
+     * 	The getPolicyHoldersBMI() function calculates and returns the Policy Holder's BMI
+     * 
+     * @return Policy Holder's BMI
+     * */
+    public double getPolicyHoldersBMI(){
+        return ((double)(getWeight() * 703) / (getHeight() * getHeight()));
+    }
+
+    /**
+     * 	The getInsurancePrice() function calculates and returns the insurance price
+     * 
+     * @return Policy Holder's insurance price
+     * */
+    public double getInsurancePrice(){
+    	double price = 600;
+        if(getAge() > 50){
+            price+= 75;
+        }
+        if(getSmokingStatus().equalsIgnoreCase("smoker")){
+            price+= 100;
+        }
+        if(((getHeight() * 703) / (getHeight() * getHeight())) > 35){
+            price+= (double)((((getWeight() * 703) / (getHeight() * getHeight()))-35)*20);
+        }
+
+        return price;
+    }
 
     /**
       toString method
@@ -180,11 +221,13 @@ public class PolicyHolder
    public String toString()
    {
       return String.format("Policy Holder's First Name: " + phFirstName + 
-             "\Policy Holder's Last Name: " + phLastName + 
-             "\nPolicy Holder's Age: " + phAge +
-             "\nPolicy Holder's Smoking Status: " + smokerStatus +
-             "\nPolicy Holder's Height: " + phHeight +
-             "\nPolicy Holder's Smoking Weight: " + phWeight);
+             "\nPolicyholder's Last Name: " + phLastName + 
+             "\nPolicyholder's Age: " + phAge +
+             "\nPolicyholder's Smoking Status: " + smokerStatus +
+             "\nPolicyholder's Height: " + phHeight +
+             "\nPolicyholder's Smoking Weight: " + phWeight+
+             "\nPolicyholder's BMI: %.2f\nPolicy Price: " + getInsurancePrice(), getPolicyHoldersBMI());
+             
    }
 
 }
