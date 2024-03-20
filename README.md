@@ -1,2 +1,2 @@
 # CSC251Project
- Repository for hosting the CSC251 Programming Project
+The program counts the total number of Policy objects created and categorizes them based on the policyholder's smoking status, tallying the number of smokers and non-smokers. After processing all entries, it outputs the total count of policy objects, the number of policies for smokers, and the number of policies for non-smokers, providing insights into the demographic distribution of the policyholders based on their smoking status.
